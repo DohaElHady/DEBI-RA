@@ -1,0 +1,87 @@
+
+
+The code lines have $ sign before it
+The comments have # sign before it
+
+/*********************Bashrc ****************************************/
+# A bashrc file is shell script that Bash runs whenever it is started.
+Edit Bashrc file:
+  $ gedit .bashrc
+
+/********************************************************************/
+/*******************ROS with BASH************************************/
+
+ROS running bash main command:# to allow the terminal to run the ROS
+  $ source /opt/ros/noetic/setup.bash
+Workspace running bash main command: # to allow the terminal to run the packages from the workspace
+  $ source ~/catkin_ws/devel/setup.bash
+#add these 2 lines to the bashrc file so that they run whenever a terminal is opened
+
+/********************************************************************/
+/***********************ROS Main Commands****************************/
+
+Run MasterCore:
+  $ roscore
+Argument to take you to $ROS_WORKSPACE:
+  $ roscd
+
+/************************Turtlesim CMDs******************************/
+Run turtlesim node:
+  $ rosrun turtlesim turtlesim_node
+Make turtle move with the keyboard arrows:
+  $ rosrun turtlesim turtle_teleop_key
+
+/***************************ROS Topics CMDs**************************/
+Each node has topics inside it
+ROS topic commands: bw / echo / find / hz / info / list / pub / type
+  $ rostopic list
+  $ rostopic echo /topicname #(echo gives us the internal content)
+  $ rostopic info /topicname #(returns data about the topic as type & publishers & subscribers)
+  $ rostopic pub -r 10 /topicname
+          #(publishing)(freq)(/to)
+
+/***************************ROS MSGs CMDs***************************/
+  $ rosmsg list
+Display Msg content:
+  $ rosmsg show geometry_msgs/Twist = rosmsg info geometry_msgs/Twist
+
+
+/********************************************************************/
+/************************Build ROS Workspace************************/
+
+create workspace with directory inside it: (General Ubuntu Command)
+  $ mkdir -p catkin_ws/src    #-p allows us t make one file inside another
+                              #catkin_ws is the workspace name (can be changed)
+Open the file:
+  $ cd catkin_ws
+  $ ls   #list files
+
+/************************Setup Workspace Packages********************/
+Each workspace has three files: src (packages are inside it) & devel & build
+
+Setup the workspace & create devel & build files:
+  $ cd ~/catkin_ws #open the workspace directory
+  $ catkin_make
+
+Create package in src files:
+doha@RA-7:~/catkin_ws $ cd src
+                      $ catkin_create_pkg debi    #debi is the package name (can be changed)
+                      or
+                      $ catkin_create_pkg debi std_msgs rospy     #informs ROS that debi may use libraries as std_msgs & rospy
+
+Create a script file for the package to write the code in:
+doha@RA-7:~/catkin_ws               $ cd src
+doha@RA-7:~/catkin_ws/src           $ cd debi/
+doha@RA-7:~/catkin_ws/src/debi      $ cd src
+doha@RA-7:~/catkin_ws/src/debi/src  $ touch publisher.py  #creating script file to write the code in
+
+
+Make the python file executable:
+  $ chmod u+x filename.py
+  or add this line at the start of the code as it is exactly
+  #!/usr/bin/env python3
+      (This will instruct your shell to execute the script via python instead of trying to interpret it on its own.)
+
+Run ROS Package:
+  $ roscore
+  $ rosrun pkg_name filename.py
