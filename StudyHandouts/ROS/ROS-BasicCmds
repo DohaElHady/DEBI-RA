@@ -6,9 +6,8 @@ The comments have # sign before it
 /*********************Bashrc ****************************************/
 # A bashrc file is shell script that Bash runs whenever it is started.
 Edit Bashrc file:
-'''
   $ gedit .bashrc
-'''
+
 /********************************************************************/
 /*******************ROS with BASH************************************/
 
