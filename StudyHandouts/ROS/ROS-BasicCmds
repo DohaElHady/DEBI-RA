@@ -35,7 +35,7 @@ Make turtle move with the keyboard arrows:
 Each node has topics inside it
 ROS topic commands: bw / echo / find / hz / info / list / pub / type
   $ rostopic list
-  $ rostopic echo /topicname #(echo gives us the internal content)
+  $ rostopic echo /topicname #(echo gives us the internal content), allows us to display every message been sent on the topic
   $ rostopic info /topicname #(returns data about the topic as type & publishers & subscribers)
   $ rostopic pub -r 10 /topicname
           #(publishing)(freq)(/to)
