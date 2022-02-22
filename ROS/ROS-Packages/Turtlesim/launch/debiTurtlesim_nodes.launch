@@ -1,0 +1,4 @@
+<launch>
+  <node name="turtlesim_node" type="turtlesim_node" pkg="turtlesim"/>
+  <node name="PosRW" pkg="debiTurtlesim" type="turtlesim_PosRW.py" output="screen"/>
+</launch>
