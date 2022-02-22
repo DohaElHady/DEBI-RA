@@ -2,7 +2,11 @@
 import rospy
 from geometry_msgs.msg import Twist
 from turtlesim.msg import Pose
-
+pubTopicName='/turtle1/cmd_vel'
+pubMsgType=Twist
+subTopicName='/turtle1/pose'
+subMsgType=Pose
+nodeName='PosRW'
 ###############################################################################
 
 def velocity_sender():
@@ -51,10 +55,10 @@ def pos_recieve_action(message):
 
 ###############################################################################
 
-rospy.init_node('PosRW',anonymous=True)
-velocity_send=rospy.Publisher('/turtle1/cmd_vel',Twist,queue_size=10)
-velocity_msg= Twist()
+rospy.init_node(nodeName,anonymous=True)
+velocity_send=rospy.Publisher(pubTopicName,pubMsgType,queue_size=10)
+velocity_msg= pubMsgType()
 
-rospy.Subscriber('/turtle1/pose',Pose,pos_recieve_action)
+rospy.Subscriber(subTopicName,subMsgType,pos_recieve_action)
 while not rospy.is_shutdown():
     velocity_sender()
