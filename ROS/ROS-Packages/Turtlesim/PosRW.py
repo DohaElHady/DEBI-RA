@@ -38,18 +38,16 @@ def velocity_sender():
 
 
 ###############################################################################
-
 '''
 The ROS python library runs additional threads to handle message subscription and publishing.
 So when you call rospy.Subscribe in your code, it doesn't check for incoming messages and
 execute callbacks itself. It simply adds the topic and function to a list.
 This list is regularly checked in a different thread which executes the callbacks as needed.
-This is why you don't need any polling in your code to make the message callbacks work and you need to add your looping code in it.
+This is why you don't need any polling in your code to make the message callbacks work.
 '''
-
 def pos_recieve_action(message):
     rospy.loginfo("recieved({})".format(message))
-    velocity_sender()
+
 
 ###############################################################################
 
@@ -58,4 +56,5 @@ velocity_send=rospy.Publisher('/turtle1/cmd_vel',Twist,queue_size=10)
 velocity_msg= Twist()
 
 rospy.Subscriber('/turtle1/pose',Pose,pos_recieve_action)
-rospy.spin()
+while not rospy.is_shutdown():
+    velocity_sender()
