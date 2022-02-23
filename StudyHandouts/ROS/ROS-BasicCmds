@@ -101,3 +101,24 @@ Then run catkin_make for the workspace.
 /************************Launch Files********************************/
 Run Launch File
   $  roslaunch debi_nodes.launch
+  
+/********************************************************************/
+/********************************************************************/
+download tutrlebot3
+https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/
+
+/*******************************************************************/
+/***************************Gazebo**********************************/
+Gazebo:
+  $ gazebo # to open it with no world inside
+Run gazebo world:
+  $ roslaunch pkg worldName.launch
+
+/**************************SLAM*************************************/
+Make a map for a world:
+  $ roslaunch pkg worldName.launch
+  $ roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
+  $ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+Save the map before you close slam:  
+  $ rosrun map_server map_saver -f ~/catkin_ws/src/debi/maps/mapName
