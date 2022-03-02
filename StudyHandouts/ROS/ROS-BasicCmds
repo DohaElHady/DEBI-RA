@@ -2,7 +2,7 @@
 
 The code lines have $ sign before it
 The comments have # sign before it
-eee
+
 /*********************Bashrc ****************************************/
 # A bashrc file is shell script that Bash runs whenever it is started.
 Edit Bashrc file:
