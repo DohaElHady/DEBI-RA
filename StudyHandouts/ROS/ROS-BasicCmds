@@ -2,7 +2,7 @@
 
 The code lines have $ sign before it
 The comments have # sign before it
-
+eee
 /*********************Bashrc ****************************************/
 # A bashrc file is shell script that Bash runs whenever it is started.
 Edit Bashrc file:
@@ -85,7 +85,7 @@ Make the python file executable:
 Run ROS Package:
   $ roscore
   $ rosrun pkg_name filename.py
-  
+
 /********************************************************************/
 /************************Add New Msg*********************************/
 When we add new message,we should add its name in the CMakeLists.txt:
@@ -101,7 +101,7 @@ Then run catkin_make for the workspace.
 /************************Launch Files********************************/
 Run Launch File
   $  roslaunch debi_nodes.launch
-  
+
 /********************************************************************/
 /********************************************************************/
 download tutrlebot3
@@ -120,5 +120,5 @@ Make a map for a world:
   $ roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
   $ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 
-Save the map before you close slam:  
+Save the map before you close slam:
   $ rosrun map_server map_saver -f ~/catkin_ws/src/debi/maps/mapName
